@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>彩虹蛋糕工作室 — 元朗</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--pink:#E8637A;--pink-light:#F5A0B0;--soft:#FFF5F7;--dark:#2D1B20;--text:#2D1B20;--muted:#9B6B76;--border:rgba(232,99,122,0.15)}
+    html{scroll-behavior:smooth}
+    body{background:var(--soft);color:var(--text);font-family:'Helvetica Neue',-apple-system,'PingFang HK',sans-serif}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 48px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,245,247,0.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .logo{color:var(--pink);font-size:18px;font-weight:700;letter-spacing:0.02em}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:color 0.3s}
+    .nav-links a:hover{color:var(--pink)}
+    .nav-cta{background:var(--pink);color:#fff;padding:10px 24px;border-radius:100px;text-decoration:none;font-size:14px;font-weight:500;transition:all 0.3s}
+    .nav-cta:hover{background:var(--pink-light)}
+    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 40px 80px;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(232,99,122,0.08) 0%,transparent 70%)}
+    .hero-badge{position:relative;display:inline-block;border:1px solid var(--border);color:var(--pink);font-size:12px;letter-spacing:0.15em;padding:6px 20px;border-radius:100px;margin-bottom:28px;background:rgba(232,99,122,0.05)}
+    .hero h1{position:relative;font-size:clamp(40px,7vw,88px);font-weight:700;line-height:1.05;margin-bottom:12px}
+    .hero h1 span{color:var(--pink)}
+    .hero-sub{position:relative;font-size:16px;color:var(--muted);letter-spacing:0.1em;margin-bottom:40px}
+    .hero-btns{position:relative;display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+    .btn-primary{background:var(--pink);color:#fff;padding:16px 40px;border-radius:100px;text-decoration:none;font-size:15px;font-weight:500;transition:all 0.3s}
+    .btn-primary:hover{background:var(--pink-light);transform:translateY(-2px)}
+    .btn-secondary{border:1px solid var(--border);color:var(--text);padding:16px 40px;border-radius:100px;text-decoration:none;font-size:15px;transition:all 0.3s}
+    .btn-secondary:hover{border-color:var(--pink);color:var(--pink)}
+    .section{padding:100px 48px;max-width:1200px;margin:0 auto}
+    .section-label{font-size:11px;letter-spacing:0.3em;color:var(--pink);text-transform:uppercase;margin-bottom:20px}
+    .section-title{font-size:clamp(28px,4vw,52px);font-weight:700;line-height:1.1;margin-bottom:20px}
+    .section-body{font-size:17px;color:var(--muted);line-height:1.8;max-width:600px}
+    .divider{width:100%;height:1px;background:var(--border)}
+    .cake-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-top:48px}
+    .cake-card{border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.3s;background:#fff}
+    .cake-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(232,99,122,0.12)}
+    .cake-img{width:100%;height:200px;object-fit:cover}
+    .cake-ph{width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:56px;background:linear-gradient(135deg,#FFE4EC,#FFB3C6)}
+    .cake-body{padding:20px}
+    .cake-name{font-size:17px;font-weight:700;margin-bottom:6px}
+    .cake-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:10px}
+    .cake-price{font-size:18px;color:var(--pink);font-weight:700}
+    .cake-tag{display:inline-block;background:rgba(232,99,122,0.1);color:var(--pink);font-size:11px;padding:3px 10px;border-radius:100px;margin-bottom:10px}
+    .steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px;margin-top:48px}
+    .step{background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px 24px;text-align:center}
+    .step-num{width:48px;height:48px;background:var(--pink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;margin:0 auto 16px}
+    .step-title{font-size:16px;font-weight:700;margin-bottom:8px}
+    .step-desc{font-size:13px;color:var(--muted);line-height:1.6}
+    .order-box{background:#fff;border:1px solid var(--border);border-radius:16px;padding:48px;margin-top:48px;text-align:center}
+    .order-box h3{font-size:28px;font-weight:700;margin-bottom:12px}
+    .order-box p{font-size:16px;color:var(--muted);margin-bottom:32px;line-height:1.7}
+    .wa-btn{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:18px 48px;border-radius:100px;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.3s}
+    .wa-btn:hover{background:#1da851;transform:translateY(-2px)}
+    footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .footer-logo{color:var(--pink);font-size:16px;font-weight:700}
+    .footer-text{font-size:13px;color:var(--muted)}
+    .form-badge{position:fixed;bottom:24px;right:24px;background:rgba(45,27,32,0.9);border:1px solid var(--border);backdrop-filter:blur(12px);padding:10px 18px;border-radius:100px;font-size:12px;color:#aaa;text-decoration:none;z-index:99}
+    .form-badge span{color:var(--pink)}
+    @media(max-width:768px){nav{padding:16px 20px}.nav-links{display:none}.section{padding:60px 24px}footer{padding:28px 24px;flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">彩虹蛋糕工作室</div>
+    <ul class="nav-links">
+      <li><a href="#about">關於</a></li>
+      <li><a href="#cakes">蛋糕</a></li>
+      <li><a href="#order">訂購</a></li>
+    </ul>
+    <a href="https://wa.me/85200000000" class="nav-cta">立即訂購</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">元朗手工蛋糕 · 全人手製作</div>
+    <h1>彩虹<span>蛋糕</span><br>工作室</h1>
+    <p class="hero-sub">Yuen Long · 每個蛋糕都係獨一無二</p>
+    <div class="hero-btns">
+      <a href="#cakes" class="btn-primary">睇蛋糕系列</a>
+      <a href="#order" class="btn-secondary">訂製蛋糕</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <div class="section" id="about">
+    <p class="section-label">About · 關於我們</p>
+    <h2 class="section-title">用心製作，<br>每個蛋糕都有故事</h2>
+    <p class="section-body">彩虹蛋糕工作室係元朗嘅手工蛋糕專門店，由熱愛烘焙嘅 Mandy 創立。我哋堅持全人手製作，唔用任何人造色素，以天然食材打造每一個獨特嘅蛋糕。無論係生日、婚禮、紀念日，我哋都能為你訂製最完美嘅蛋糕。</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section" id="cakes">
+    <p class="section-label">Our Cakes · 蛋糕系列</p>
+    <h2 class="section-title">每款都係心血之作</h2>
+    <div class="cake-grid">
+      <div class="cake-card"><img class="cake-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="cake"/><div class="cake-body"><div class="cake-tag">最受歡迎</div><div class="cake-name">彩虹分層蛋糕</div><div class="cake-desc">六層天然色素分層，視覺效果驚艷，口味香甜不膩。</div><div class="cake-price">HK$380 起</div></div></div>
+      <div class="cake-card"><img class="cake-img" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80" alt="wedding cake"/><div class="cake-body"><div class="cake-tag">婚禮首選</div><div class="cake-name">婚禮多層蛋糕</div><div class="cake-desc">優雅白色設計，可加入新人名字同日期，永久紀念。</div><div class="cake-price">HK$880 起</div></div></div>
+      <div class="cake-card"><img class="cake-img" src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80" alt="birthday"/><div class="cake-body"><div class="cake-tag">生日必選</div><div class="cake-name">客製生日蛋糕</div><div class="cake-desc">完全按照你嘅要求設計，獨一無二，送禮自用皆宜。</div><div class="cake-price">HK$280 起</div></div></div>
+      <div class="cake-card"><div class="cake-ph">🍰</div><div class="cake-body"><div class="cake-tag">下午茶</div><div class="cake-name">迷你蛋糕禮盒</div><div class="cake-desc">六款口味迷你蛋糕禮盒，適合送禮或下午茶聚會。</div><div class="cake-price">HK$180 / 盒</div></div></div>
+      <div class="cake-card"><div class="cake-ph">🧁</div><div class="cake-body"><div class="cake-tag">人氣</div><div class="cake-name">紙杯蛋糕</div><div class="cake-desc">多款口味，新鮮每日製作，適合派對分享。</div><div class="cake-price">HK$25 / 個</div></div></div>
+      <div class="cake-card"><div class="cake-ph">🎂</div><div class="cake-body"><div class="cake-tag">企業</div><div class="cake-name">企業訂製蛋糕</div><div class="cake-desc">印上公司 Logo 或品牌元素，適合企業活動及周年慶典。</div><div class="cake-price">HK$450 起</div></div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section" id="order">
+    <p class="section-label">How To Order · 訂購流程</p>
+    <h2 class="section-title">簡單3步，<br>完成訂購</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-title">WhatsApp 聯絡</div><div class="step-desc">發訊息話我哋你想要嘅款式、尺寸同日期</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-title">確認設計</div><div class="step-desc">我哋會提供設計草圖，確認後收取訂金</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-title">新鮮取貨</div><div class="step-desc">指定日期到工作室取貨，或安排送貨上門</div></div>
+    </div>
+    <div class="order-box">
+      <h3>準備好訂蛋糕了？</h3>
+      <p>提前 *3-5 個工作天* 預訂，確保蛋糕新鮮製作。<br>婚禮蛋糕建議提前 *2-4 週* 預訂。</p>
+      <a href="https://wa.me/85200000000?text=你好，我想訂蛋糕！" class="wa-btn">WhatsApp 立即訂購</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <footer>
+    <div class="footer-logo">彩虹蛋糕工作室</div>
+    <div class="footer-text">© 2026 彩虹蛋糕工作室 · 元朗</div>
+    <div style="font-size:13px;color:var(--muted)">WhatsApp 訂購 · 全人手製作</div>
+  </footer>
+
+  <a href="https://formhk.com" class="form-badge">Built by <span>FORM</span></a>
+
+  <script>
+    const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.style.opacity='1';x.target.style.transform='translateY(0)'}}),{threshold:0.1});
+    document.querySelectorAll('.cake-card,.step,.section-title,.section-body').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity 0.6s ease,transform 0.6s ease';obs.observe(el)});
+  </script>
+</body>
+</html>

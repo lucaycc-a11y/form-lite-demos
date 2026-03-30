@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>澳洲牛奶公司 — 佐敦</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--red:#C8102E;--cream:#FFF8F0;--dark:#1A0A00;--text:#2C1810;--muted:#8B6E5A;--border:rgba(200,16,46,0.15)}
+    html{scroll-behavior:smooth}
+    body{background:var(--cream);color:var(--text);font-family:'Helvetica Neue',-apple-system,'PingFang HK',sans-serif}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 48px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,248,240,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .logo{color:var(--red);font-size:18px;font-weight:700;letter-spacing:0.05em}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:color 0.3s}
+    .nav-links a:hover{color:var(--red)}
+    .nav-cta{background:var(--red);color:#fff;padding:10px 24px;border-radius:4px;text-decoration:none;font-size:14px;font-weight:500;transition:opacity 0.3s}
+    .nav-cta:hover{opacity:0.85}
+    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 40px 80px;background:linear-gradient(180deg,var(--cream) 0%,#FFF0E0 100%);position:relative;overflow:hidden}
+    .hero-img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0.08}
+    .hero-badge{display:inline-block;border:1px solid var(--border);color:var(--red);font-size:12px;letter-spacing:0.2em;padding:6px 20px;border-radius:100px;margin-bottom:28px;background:rgba(200,16,46,0.05);position:relative}
+    .hero h1{font-size:clamp(40px,7vw,88px);font-weight:700;letter-spacing:-0.02em;line-height:1.05;margin-bottom:12px;position:relative}
+    .hero h1 span{color:var(--red)}
+    .hero-sub{font-size:16px;color:var(--muted);letter-spacing:0.1em;margin-bottom:40px;position:relative}
+    .hero-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;position:relative}
+    .btn-primary{background:var(--red);color:#fff;padding:16px 40px;border-radius:4px;text-decoration:none;font-size:15px;font-weight:500;transition:all 0.3s}
+    .btn-primary:hover{opacity:0.85;transform:translateY(-2px)}
+    .btn-secondary{border:1px solid var(--border);color:var(--text);padding:16px 40px;border-radius:4px;text-decoration:none;font-size:15px;transition:all 0.3s}
+    .btn-secondary:hover{border-color:var(--red);color:var(--red)}
+    .section{padding:100px 48px;max-width:1200px;margin:0 auto}
+    .section-label{font-size:11px;letter-spacing:0.3em;color:var(--red);text-transform:uppercase;margin-bottom:20px}
+    .section-title{font-size:clamp(28px,4vw,52px);font-weight:700;letter-spacing:-0.02em;line-height:1.1;margin-bottom:20px}
+    .section-body{font-size:17px;color:var(--muted);line-height:1.8;max-width:600px}
+    .divider{width:100%;height:1px;background:var(--border)}
+    .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;margin-top:56px}
+    .menu-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:all 0.3s}
+    .menu-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(200,16,46,0.1)}
+    .menu-img{width:100%;height:180px;object-fit:cover;background:linear-gradient(135deg,#FFE8D6,#FFD0B0)}
+    .menu-img-placeholder{width:100%;height:180px;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(135deg,#FFE8D6,#FFD0B0)}
+    .menu-body{padding:24px}
+    .menu-name{font-size:18px;font-weight:700;margin-bottom:6px}
+    .menu-desc{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:12px}
+    .menu-price{font-size:20px;color:var(--red);font-weight:700}
+    .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:64px}
+    .stat{background:var(--cream);padding:40px;text-align:center}
+    .stat-num{font-size:48px;font-weight:700;color:var(--red);line-height:1}
+    .stat-label{font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:0.05em}
+    .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:48px}
+    .info-item{padding:24px 0;border-bottom:1px solid var(--border)}
+    .info-label{font-size:12px;color:var(--red);letter-spacing:0.1em;margin-bottom:6px}
+    .info-value{font-size:16px;color:var(--text);line-height:1.6}
+    .whatsapp-btn{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:18px 40px;border-radius:8px;text-decoration:none;font-size:16px;font-weight:600;margin-top:32px;transition:all 0.3s}
+    .whatsapp-btn:hover{background:#1da851;transform:translateY(-2px)}
+    footer{border-top:1px solid var(--border);padding:40px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;background:#fff}
+    .footer-logo{color:var(--red);font-size:16px;font-weight:700}
+    .footer-text{font-size:13px;color:var(--muted)}
+    .form-badge{position:fixed;bottom:24px;right:24px;background:rgba(26,10,0,0.9);border:1px solid rgba(200,16,46,0.3);backdrop-filter:blur(12px);padding:10px 18px;border-radius:100px;font-size:12px;color:#aaa;text-decoration:none;transition:all 0.3s;z-index:99}
+    .form-badge span{color:var(--red)}
+    @media(max-width:768px){nav{padding:16px 20px}.nav-links{display:none}.section{padding:60px 24px}.stats-row{grid-template-columns:1fr}.info-grid{grid-template-columns:1fr}footer{padding:28px 24px;flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">澳洲牛奶公司</div>
+    <ul class="nav-links">
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#menu">招牌菜單</a></li>
+      <li><a href="#visit">到訪</a></li>
+    </ul>
+    <a href="https://wa.me/85200000000" class="nav-cta">立即預訂</a>
+  </nav>
+
+  <section class="hero">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=80" alt="restaurant" />
+    <div class="hero-badge">SINCE 1970 · 佐敦地道茶餐廳</div>
+    <h1>澳洲<span>牛奶</span>公司</h1>
+    <p class="hero-sub">Jordan · 窩打老道 47-49 號</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-primary">睇招牌菜單</a>
+      <a href="#visit" class="btn-secondary">前往位置</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <div class="section" id="about">
+    <p class="section-label">About · 關於我們</p>
+    <h2 class="section-title">半世紀香港味道</h2>
+    <p class="section-body">澳洲牛奶公司係香港最具代表性嘅茶餐廳之一，以新鮮牛奶燉蛋、炒蛋多士聞名全港，更係無數旅遊指南推薦嘅必到地點。每日清晨開始，街頭已大排長龍，呢份堅持，係對香港飲食文化嘅承諾。</p>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num">50+</div><div class="stat-label">年歷史</div></div>
+      <div class="stat"><div class="stat-num">1000+</div><div class="stat-label">每日客人</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">米芝蓮推薦</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section" id="menu">
+    <p class="section-label">Menu · 招牌菜單</p>
+    <h2 class="section-title">每一口都係香港</h2>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <img class="menu-img" src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=600&q=80" alt="egg" />
+        <div class="menu-body"><div class="menu-name">燉蛋</div><div class="menu-desc">新鮮牛奶燉製，入口即化，每日限量，賣完即止。</div><div class="menu-price">HK$28</div></div>
+      </div>
+      <div class="menu-card">
+        <img class="menu-img" src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&q=80" alt="toast" />
+        <div class="menu-body"><div class="menu-name">炒蛋多士</div><div class="menu-desc">香滑炒蛋配香脆多士，簡單中帶出完美口感。</div><div class="menu-price">HK$38</div></div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-img-placeholder">🥛</div>
+        <div class="menu-body"><div class="menu-name">鮮奶咖啡</div><div class="menu-desc">採用新鮮牛奶沖製，奶香濃郁，係本店招牌飲品。</div><div class="menu-price">HK$22</div></div>
+      </div>
+      <div class="menu-card">
+        <img class="menu-img" src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&q=80" alt="milk" />
+        <div class="menu-body"><div class="menu-name">凍鮮奶</div><div class="menu-desc">每日新鮮到貨，純正牛奶，係澳洲牛奶公司嘅靈魂。</div><div class="menu-price">HK$18</div></div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-img-placeholder">🍜</div>
+        <div class="menu-body"><div class="menu-name">通粉</div><div class="menu-desc">清湯通粉，配搭各式配料，早餐至下午茶皆宜。</div><div class="menu-price">HK$32</div></div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-img-placeholder">🧁</div>
+        <div class="menu-body"><div class="menu-name">牛油多士套餐</div><div class="menu-desc">多士配鮮奶或咖啡，最經典嘅香港早餐組合。</div><div class="menu-price">HK$45</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section" id="visit">
+    <p class="section-label">Visit · 到訪資訊</p>
+    <h2 class="section-title">歡迎到訪</h2>
+    <div class="info-grid">
+      <div>
+        <div class="info-item"><div class="info-label">地址</div><div class="info-value">九龍佐敦窩打老道 47-49 號</div></div>
+        <div class="info-item"><div class="info-label">營業時間</div><div class="info-value">星期二至日：07:30 — 23:00<br>星期一休息</div></div>
+        <div class="info-item"><div class="info-label">最近地鐵站</div><div class="info-value">佐敦站 A 出口（步行 3 分鐘）</div></div>
+        <div class="info-item"><div class="info-label">電話</div><div class="info-value">+852 2730 7177</div></div>
+      </div>
+      <div>
+        <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:24px">人氣極旺，建議非繁忙時段到訪。平日早上 9 時前或下午 3-5 時等候時間較短。</p>
+        <a href="https://wa.me/85200000000" class="whatsapp-btn">WhatsApp 查詢</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <footer>
+    <div class="footer-logo">澳洲牛奶公司</div>
+    <div class="footer-text">© 2026 澳洲牛奶公司 · 佐敦</div>
+    <div  </footer>
+  <a href="https://formhk.com" class="form-badge">Built by <span>FORM</span></a>
+  <script>
+    const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.style.opacity='1';x.target.style.transform='translateY(0)'}}),{threshold:0.1});
+    document.querySelectorAll('.menu-card,.stat,.section-title,.section-body').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity 0.6s ease,transform 0.6s ease';obs.observe(el)});
+  </script>
+</body>
+</html>
